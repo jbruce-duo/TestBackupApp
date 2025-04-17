@@ -12,16 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestBackupApp"
         android:fullBackupOnly="true"
-        android:backupAgent="com.example.testbackupapp.TestBackupAgent"
-        tools:targetApi="31">
+        android:backupAgent="com.example.testbackupapp.TestBackupAgent">
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.TestBackupApp">
+            android:theme="@style/Theme.TestBackupApp"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

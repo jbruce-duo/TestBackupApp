@@ -53,5 +53,49 @@ dependencies {
     androidTestImplementation libs.androidx.ui.test.junit4
     debugImplementation libs.androidx.ui.tooling
     debugImplementation libs.androidx.ui.test.manifest
-    implementation "androidx.compose.runtime:runtime-livedata:1.7.8"
+    implementation libs.androidx.runtime.livedata
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
+
+    // Navigation Framework in Kotlin...
+    implementation "androidx.navigation:navigation-fragment-ktx:${versions.navigation}"
+    implementation "androidx.navigation:navigation-ui-ktx:${versions.navigation}"
+
+    implementation "androidx.viewpager2:viewpager2:${versions.viewpager2}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:${versions.compose_viewmodel}"
+
+    implementation "com.google.android.material:material:${versions.material}"
+
+    implementation platform("com.google.firebase:firebase-bom:${versions.firebase_bom}")
+    implementation "com.google.firebase:firebase-analytics"
+    implementation "com.google.firebase:firebase-config"
+    implementation "com.google.firebase:firebase-crashlytics"
+    implementation "com.google.firebase:firebase-messaging"
+
+    implementation "androidx.recyclerview:recyclerview:$versions.androidx_recyclerview"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.androidx_constraint_layout}"
+    implementation("androidx.work:work-runtime-ktx:${versions.androidx_work}") {
+        exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
+    implementation "androidx.preference:preference-ktx:${versions.androidx_prefs}"
+    implementation "androidx.biometric:biometric:${versions.androidx_biometric}"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx_coroutines}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx_coroutines}"
+
+    implementation "com.google.android.play:review:${versions.play_review}"
+    implementation "com.google.android.play:review-ktx:${versions.play_review}"
+
+    implementation "com.google.android.gms:play-services-wearable:${versions.wearable_play_services}"
+
+    // Compose dependencies
+    def composeBom = platform("androidx.compose:compose-bom:${versions.compose_bom}")
+    implementation composeBom
+
+    implementation 'androidx.compose.material3:material3'
+
+    implementation "androidx.lifecycle:lifecycle-runtime-compose:$versions.lifecycle_runtime_compose"
+    implementation("androidx.compose.runtime:runtime-livedata:$versions.compose_livedata")
+
+    implementation "androidx.activity:activity-compose:${versions.compose_activity}"
 }

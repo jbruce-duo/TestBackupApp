@@ -1,6 +1,7 @@
 package com.example.testbackupapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -24,6 +25,7 @@ class MainActivity : ComponentActivity() {
     private val scope = CoroutineScope(Dispatchers.IO)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("JBDBG", "onCreate called")
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
@@ -40,6 +42,7 @@ class MainActivity : ComponentActivity() {
     }
 
     override fun onResume() {
+        Log.d("JBDBG", "onResume called")
         scope.launch {
             val file = File(filesDir, "someFile.txt")
             if (!file.exists()) {

@@ -13,15 +13,19 @@ import java.time.format.DateTimeFormatter
 
 class TestBackupAgent: BackupAgent() {
 
+    init {
+        Log.d("JBDBG", "TestBackupAgent created")
+    }
+
     override fun onFullBackup(data: FullBackupDataOutput?) {
         if (data == null) {
-            Log.d("TestBackupAgent", "onFullBackup called with null data, exiting")
+            Log.d("JBDBG", "onFullBackup called with null data, exiting")
             return
         }
 
         val encryptionEnabled = data.transportFlags and FLAG_CLIENT_SIDE_ENCRYPTION_ENABLED > 0
         val deviceTransfer = data.transportFlags and FLAG_DEVICE_TO_DEVICE_TRANSFER > 0
-        Log.d("TestBackupAgent", "onFullBackup called with flags: ${data.transportFlags} encryptionEnabled: $encryptionEnabled, deviceTransfer: $deviceTransfer")
+        Log.d("JBDBG", "onFullBackup called with flags: ${data.transportFlags} encryptionEnabled: $encryptionEnabled, deviceTransfer: $deviceTransfer")
 
         val someBackupFile = File(applicationContext.filesDir, "someFile.txt")
         FileWriter(someBackupFile).use { writer ->
@@ -30,7 +34,7 @@ class TestBackupAgent: BackupAgent() {
             writer.write("This is the contents of a test backup file created at $currentDateTime. During backup, flags were ${data.transportFlags} and encryptionEnabled was $encryptionEnabled and deviceTransfer was $deviceTransfer")
         }
         fullBackupFile(someBackupFile, data)
-        Log.d("TestBackupAgent", "backup file written to ${someBackupFile.absolutePath}")
+        Log.d("JBDBG", "backup file written to ${someBackupFile.absolutePath}")
     }
 
     override fun onRestoreFile(
@@ -41,13 +45,13 @@ class TestBackupAgent: BackupAgent() {
         mode: Long,
         mtime: Long
     ) {
-        Log.d("TestBackupAgent", "onRestoreFile called with file ${destination?.name} with size $size")
+        Log.d("JBDBG", "onRestoreFile called with file ${destination?.name} with size $size")
         super.onRestoreFile(data, size, destination, type, mode, mtime)
     }
 
     override fun onCreate() {
         super.onCreate()
-        Log.d("TestBackupAgent", "onCreate called")
+        Log.d("JBDBG", "onCreate called")
     }
 
     override fun onBackup(
@@ -55,7 +59,7 @@ class TestBackupAgent: BackupAgent() {
         data: BackupDataOutput?,
         newState: ParcelFileDescriptor?
     ) {
-        Log.d("TestBackupAgent", "onBackup called")
+        Log.d("JBDBG", "onBackup called")
     }
 
     override fun onRestore(
@@ -63,6 +67,6 @@ class TestBackupAgent: BackupAgent() {
         appVersionCode: Int,
         newState: ParcelFileDescriptor?
     ) {
-        Log.d("TestBackupAgent", "onRestore called")
+        Log.d("JBDBG", "onRestore called")
     }
 }
