@@ -85,8 +85,6 @@ dependencies {
     implementation "com.google.android.play:review:${versions.play_review}"
     implementation "com.google.android.play:review-ktx:${versions.play_review}"
 
-    implementation "com.google.android.gms:play-services-wearable:${versions.wearable_play_services}"
-
     // Compose dependencies
     def composeBom = platform("androidx.compose:compose-bom:${versions.compose_bom}")
     implementation composeBom
